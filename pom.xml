@@ -5,6 +5,9 @@
     <modules>
         <module>triangle_common</module>
         <module>triangle_base</module>
+        <module>triangle_article</module>
+        <module>article_gathering</module>
+        <module>triangle_spit</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -45,13 +48,6 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+
 
 </project>

@@ -1,0 +1,15 @@
+server:
+  port: 9002
+spring:
+  redis:
+    host: 120.79.7.246
+    port: 6379
+  application:
+    name: triangle-article
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://120.79.7.246:3306/triangle_gathering?characterEncoding=utf8
+    username: root
+    password: root
+  jpa:
+    show-sql: true
