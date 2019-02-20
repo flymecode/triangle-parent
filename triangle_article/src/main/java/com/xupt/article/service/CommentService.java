@@ -22,7 +22,8 @@ public class CommentService {
 		comment.setId(idWorker.nextId() + "");
 		commentDao.save(comment);
 	}
-	public List<Comment> findByArticleid(String articleid){
+
+	public List<Comment> findByArticleid(String articleid) {
 		return commentDao.findByArticleid(articleid);
 	}
 }

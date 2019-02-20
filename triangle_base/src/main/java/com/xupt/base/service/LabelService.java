@@ -3,12 +3,13 @@ package com.xupt.base.service;
 import com.xupt.base.dao.LabelDao;
 import com.xupt.base.pojo.Label;
 import com.xupt.common.untils.IdWorker;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -76,43 +77,6 @@ public class LabelService {
 	}
 
 	/**
-	 * 构建查询条件
-	 *
-	 * @param searchMap
-	 * @return
-	 */
-
-	private Specification<Label> createSpecification(Map searchMap) {
-
-		return new Specification<Label>() {
-
-			@Override
-			public Predicate toPredicate(Root<Label> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
-
-				List<Predicate> predicateList = new ArrayList<>();
-
-				if (searchMap.get("labelname") != null && !"".equals(searchMap.get("labelname"))) {
-
-					predicateList.add(cb.like(root.get("labelname").as(String.class)
-							, "%" + searchMap.get("labelname") + "%"));
-				}
-
-				if (searchMap.get("state") != null && !"".equals(searchMap.get("state"))) {
-					predicateList.add(cb.equal(root.get("state").as(String.class)
-							, searchMap.get("state")));
-				}
-
-				if (searchMap.get("recommend") != null && !"".equals(searchMap.get("recommend"))) {
-					predicateList.add(cb.equal(root.get("recommend").as(String.class)
-							, searchMap.get("recommend")));
-				}
-
-				return cb.and(predicateList.toArray(new Predicate[predicateList.size()]));
-			}
-		};
-	}
-
-	/**
 	 * 条件查询
 	 *
 	 * @param searchMap
@@ -134,8 +98,35 @@ public class LabelService {
 	 */
 	public Page<Label> findSearch(Map searchMap, int page, int size) {
 		Specification specification = createSpecification(searchMap);
-		PageRequest pageRequest = PageRequest.of(page - 1, size);
-		return labelDao.findAll(specification, pageRequest);
+		Pageable pageable = PageRequest.of(page - 1, size);
+		return labelDao.findAll(specification, pageable);
 	}
 
+	/**
+	 * 构建查询条件
+	 *
+	 * @param searchMap
+	 * @return
+	 */
+	private Specification<Label> createSpecification(Map searchMap) {
+		return new Specification<Label>() {
+			@Override
+			public Predicate toPredicate(Root<Label> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
+				List<Predicate> predicateList = new ArrayList<>();
+				if (StringUtils.isNotEmpty((String)searchMap.get("labelname"))) {
+					predicateList.add(cb.like(root.get("labelname").as(String.class)
+							, "%" + searchMap.get("labelname") + "%"));
+				}
+				if (StringUtils.isNotEmpty((String)searchMap.get("state"))) {
+					predicateList.add(cb.equal(root.get("state").as(String.class)
+							, searchMap.get("state")));
+				}
+				if (StringUtils.isNotEmpty((String)searchMap.get("recommend"))) {
+					predicateList.add(cb.equal(root.get("recommend").as(String.class)
+							, searchMap.get("recommend")));
+				}
+				return cb.and(predicateList.toArray(new Predicate[predicateList.size()]));
+			}
+		};
+	}
 }

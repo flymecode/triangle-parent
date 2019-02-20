@@ -55,14 +55,6 @@ public class ArticleService {
 	 */
 	@Cacheable(value = "article", key = "'article_'+ #id")
 	public Article findById(String id) {
-		//从缓存中提取
-//		Article article = (Article) redisTemplate.opsForValue().get("article_" + id);
-//		// 如果缓存没有则到数据库查询并放入缓存
-//		if (article == null) {
-//			article = articleDao.findById(id).get();
-//			redisTemplate.opsForValue().set("article_" + id, article);
-//		}
-//		return article;
 		return articleDao.findById(id).get();
 	}
 
@@ -73,7 +65,6 @@ public class ArticleService {
 	 */
 	@CachePut(value = "article", key = "'article_'+ #article.id")
 	public void update(Article article) {
-		//redisTemplate.delete( "article_" + article.getId() );//删除缓存
 		articleDao.save(article);
 	}
 
@@ -84,7 +75,6 @@ public class ArticleService {
 	 */
 	@CacheEvict(value = "article", key = "'article_'+ #id")
 	public void deleteById(String id) {
-		//redisTemplate.delete( "article_" + id );//删除缓存
 		articleDao.deleteById(id);
 	}
 

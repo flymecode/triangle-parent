@@ -24,7 +24,7 @@ public class CommentController {
 	}
 
 	@RequestMapping(value = "/article/{articleId}", method = RequestMethod.GET)
-	public Result findByArticleId(@PathVariable String articleId) {
+	public Result findByArticleid(@PathVariable String articleId) {
 		return new Result(true, StatusCode.OK, "查询成功",
 				commentService.findByArticleid(articleId));
 	}

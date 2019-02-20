@@ -6,8 +6,10 @@
         <module>triangle_common</module>
         <module>triangle_base</module>
         <module>triangle_article</module>
-        <module>article_gathering</module>
+        <module>triangle_gathering</module>
         <module>triangle_spit</module>
+        <module>triangle_search</module>
+        <module>triangle_recruit</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
