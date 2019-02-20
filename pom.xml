@@ -10,6 +10,7 @@
         <module>triangle_spit</module>
         <module>triangle_search</module>
         <module>triangle_recruit</module>
+        <module>triangle_qa</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
