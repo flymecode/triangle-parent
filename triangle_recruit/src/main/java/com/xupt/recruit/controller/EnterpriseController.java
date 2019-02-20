@@ -3,6 +3,7 @@ package com.xupt.recruit.controller;
 import com.xupt.common.entity.PageResult;
 import com.xupt.common.entity.Result;
 import com.xupt.common.entity.StatusCode;
+import com.xupt.recruit.constant.EnterpriseConstant;
 import com.xupt.recruit.pojo.Enterprise;
 import com.xupt.recruit.service.EnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,9 @@ public class EnterpriseController {
 	private EnterpriseService enterpriseService;
 
 	@RequestMapping(value = "/search/hotlist", method = RequestMethod.GET)
+
 	public Result hotlist() {
-		List<Enterprise> list = enterpriseService.hotList("1");
+		List<Enterprise> list = enterpriseService.hotList(EnterpriseConstant.HOT.getMsg());
 		return new Result(true, StatusCode.OK, "查询成功", list);
 	}
 
