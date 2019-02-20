@@ -10,5 +10,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  *
  */
 public interface ReplyDao extends JpaRepository<Reply,String>,JpaSpecificationExecutor<Reply>{
+
 	
 }
