@@ -13,6 +13,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -47,14 +48,13 @@ public class SpitService {
 		spit.setComment(0);//回复数
 		spit.setState("1");//状态
 		//如果当前添加的吐槽，有父节点，那么父节点的吐槽回复数要加一
-		if (spit.getParentid() != null && !"".equals(spit.getParentid())) {
+		if (StringUtils.isEmpty(spit.getParentid())) {
 			Query query = new Query();
 			query.addCriteria(Criteria.where("_id").is(spit.getParentid()));
 			Update update = new Update();
 			update.inc("comment", 1);
 			mongoTemplate.updateFirst(query, update, "spit");
 		}
-
 		spitDao.save(spit);
 	}
 
@@ -83,6 +83,5 @@ public class SpitService {
 		update.inc("thumbup", 1);
 		mongoTemplate.updateFirst(query, update, "spit");
 	}
-
 
 }
