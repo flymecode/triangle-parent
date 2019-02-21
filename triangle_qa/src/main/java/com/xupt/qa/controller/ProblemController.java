@@ -1,8 +1,8 @@
 package com.xupt.qa.controller;
 
-import com.xupt.qa.common.entity.PageResult;
-import com.xupt.qa.common.entity.Result;
-import com.xupt.qa.common.entity.StatusCode;
+import com.xupt.common.entity.PageResult;
+import com.xupt.common.entity.Result;
+import com.xupt.common.entity.StatusCode;
 import com.xupt.qa.pojo.Problem;
 import com.xupt.qa.service.ProblemService;
 import org.springframework.beans.factory.annotation.Autowired;
