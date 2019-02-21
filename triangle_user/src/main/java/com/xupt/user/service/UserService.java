@@ -21,7 +21,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.servlet.http.HttpServletRequest;
-import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -206,7 +205,7 @@ public class UserService {
 		Map<String, String> map = new HashMap<>();
 		map.put("mobile", mobile);
 		map.put("checkCode", checkCode);
-		//rabbitTemplate.convertAndSend("sms", map);
+		rabbitTemplate.convertAndSend("sms", map);
 		//在控制台显示一份【方便测试】
 		log.info("验证码为【{}】", checkCode);
 	}
