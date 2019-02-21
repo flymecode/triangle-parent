@@ -72,11 +72,11 @@ public class UserController {
 	@RequestMapping(value = "/register/{code}", method = RequestMethod.POST)
 	public Result regist(@PathVariable String code, @RequestBody User user) {
 		//得到缓存中的验证码
-		String checkcodeRedis = (String) redisTemplate.opsForValue().get("checkcode_" + user.getMobile());
-		if (checkcodeRedis.isEmpty()) {
+		String checkCodeRedis = (String) redisTemplate.opsForValue().get("checkCode_" + user.getMobile());
+		if (checkCodeRedis.isEmpty()) {
 			return new Result(false, StatusCode.ERROR, "请先获取手机验证码");
 		}
-		if (!checkcodeRedis.equals(code)) {
+		if (!checkCodeRedis.equals(code)) {
 			return new Result(false, StatusCode.ERROR, "请输入正确的验证码");
 		}
 		userService.add(user);
