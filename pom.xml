@@ -11,6 +11,8 @@
         <module>triangle_search</module>
         <module>triangle_recruit</module>
         <module>triangle_qa</module>
+        <module>triangle_eureka</module>
+        <module>triangle_user</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
