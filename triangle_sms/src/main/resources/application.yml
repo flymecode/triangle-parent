@@ -1,0 +1,9 @@
+server:
+  port: 9009
+spring:
+  application:
+    name: triangle‐sms #指定服务名
+  rabbitmq:
+    host: 120.79.7.246
+    username: guest
+    password: guest

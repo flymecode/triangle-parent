@@ -13,6 +13,7 @@
         <module>triangle_qa</module>
         <module>triangle_eureka</module>
         <module>triangle_user</module>
+        <module>triangle_sms</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
