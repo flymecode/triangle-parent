@@ -1,0 +1,15 @@
+server:
+  port: 9008
+
+spring:
+  application:
+    name: triangle-user
+
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://120.79.7.246:3306/triangle_user?characterEncoding=utf8
+    password: root
+    username: root
+
+  jpa:
+    show-sql: true

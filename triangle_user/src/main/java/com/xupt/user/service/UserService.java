@@ -21,6 +21,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -28,8 +29,8 @@ import java.util.concurrent.TimeUnit;
  *
  * @author Administrator
  */
-@Service
 @Slf4j
+@Service
 public class UserService {
 
 	@Autowired

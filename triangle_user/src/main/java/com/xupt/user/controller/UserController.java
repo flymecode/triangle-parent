@@ -19,8 +19,8 @@ import java.util.Map;
  *
  * @author Administrator
  */
-@RestController
 @CrossOrigin
+@RestController
 @RequestMapping("/user")
 public class UserController {
 
