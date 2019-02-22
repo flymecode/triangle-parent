@@ -26,8 +26,6 @@ public class AdminController {
 	@Autowired
 	private JwtUtil jwtUtil;
 
-
-
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public Result login(@RequestBody Admin admin) {
 		Admin adminLogin = adminService.login(admin);

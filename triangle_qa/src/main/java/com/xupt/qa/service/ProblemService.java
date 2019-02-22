@@ -59,7 +59,7 @@ public class ProblemService {
 	}
 
 	public void add(Problem problem) {
-		problem.setId(idWorker.nextId()+"" );
+		problem.setId(idWorker.nextId() + "");
 		problemDao.save(problem);
 	}
 

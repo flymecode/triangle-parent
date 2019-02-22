@@ -1,5 +1,5 @@
 server:
-  port: 9009
+  port: 9010
 
 eureka:
   client:
@@ -8,3 +8,6 @@ eureka:
   instance:
     # 跨域访问
     prefer‐ip‐address: true
+spring:
+  application:
+    name: triangle-recruit

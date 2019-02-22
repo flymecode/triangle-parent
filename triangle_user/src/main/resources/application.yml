@@ -18,3 +18,11 @@ jwt:
   config:
     key: xupt
     ttl: 3600000
+
+eureka:
+  client:
+    service‐url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    # 跨域访问
+    prefer‐ip‐address: true
