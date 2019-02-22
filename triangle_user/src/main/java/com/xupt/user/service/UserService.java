@@ -6,6 +6,7 @@ import com.xupt.user.dao.UserDao;
 import com.xupt.user.pojo.User;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -134,7 +135,7 @@ public class UserService {
 	 */
 	public void deleteById(String id) {
 		String token = (String) request.getAttribute("claims_admin");
-		if (token == null || "".equals(token)) {
+		if (StringUtils.isEmpty(token)) {
 			throw new RuntimeException("权限不足！");
 		}
 		userDao.deleteById(id);
@@ -206,7 +207,7 @@ public class UserService {
 		Map<String, String> map = new HashMap<>();
 		map.put("mobile", mobile);
 		map.put("checkCode", checkCode);
-		rabbitTemplate.convertAndSend("sms", map);
+		//rabbitTemplate.convertAndSend("sms", map);
 		//在控制台显示一份【方便测试】
 		log.info("验证码为【{}】", checkCode);
 	}
@@ -219,7 +220,7 @@ public class UserService {
 		return null;
 	}
 
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public void updatefanscountandfollowcount(int x, String userid, String friendid) {
 		userDao.updatefanscount(x, friendid);
 		userDao.updatefollowcount(x, userid);

@@ -51,7 +51,7 @@ public class UserController {
 		String token = jwtUtil.createJWT(user.getId(), user.getMobile(), "user");
 		Map<String, Object> map = new HashMap<>();
 		map.put("token", token);
-		map.put("roles", "user");
+		map.put("role", "user");
 		return new Result(true, StatusCode.OK, "登录成功", map);
 	}
 
