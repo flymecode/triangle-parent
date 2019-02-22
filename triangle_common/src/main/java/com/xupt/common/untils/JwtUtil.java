@@ -1,9 +1,6 @@
 package com.xupt.common.untils;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtBuilder;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.Date;
