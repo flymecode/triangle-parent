@@ -1,0 +1,28 @@
+server:
+  port: 9004
+spring:
+  application:
+    name: friend #指定服务名
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://120.79.7.246:3306/triangle_friend?characterEncoding=utf8
+    username: root
+    password: root
+  jpa:
+    database: MySQL
+    show‐sql: true
+    generate‐ddl: true
+jwt:
+  config:
+    key: xupt
+eureka:
+  client:
+    service‐url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    # 跨域访问
+    prefer‐ip‐address: true
+
+ribbon:
+  eureka:
+    enabled: true
