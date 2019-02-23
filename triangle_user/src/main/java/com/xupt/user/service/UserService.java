@@ -202,7 +202,7 @@ public class UserService {
 		//生成六位数字随机数
 		String checkCode = RandomStringUtils.randomNumeric(6);
 		//向缓存中放一份
-		redisTemplate.opsForValue().set("checkcode_" + mobile, checkCode, 1, TimeUnit.MINUTES);
+		redisTemplate.opsForValue().set("checkCode_" + mobile, checkCode, 10, TimeUnit.MINUTES);
 		//给用户发一份
 		Map<String, String> map = new HashMap<>();
 		map.put("mobile", mobile);

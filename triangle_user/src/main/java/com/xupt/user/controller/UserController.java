@@ -6,6 +6,7 @@ import com.xupt.common.entity.StatusCode;
 import com.xupt.common.untils.JwtUtil;
 import com.xupt.user.pojo.User;
 import com.xupt.user.service.UserService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -38,7 +39,7 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/{userid}/{friendid}/{x}", method = RequestMethod.PUT)
-	public void updatefanscountandfollowcount(@PathVariable String userid, @PathVariable String friendid, @PathVariable int x) {
+	public void updatefanscountandfollowcount(@PathVariable("userid") String userid, @PathVariable("friendid") String friendid, @PathVariable("x") int x) {
 		userService.updatefanscountandfollowcount(x, userid, friendid);
 	}
 
@@ -73,7 +74,7 @@ public class UserController {
 	public Result regist(@PathVariable String code, @RequestBody User user) {
 		//得到缓存中的验证码
 		String checkCodeRedis = (String) redisTemplate.opsForValue().get("checkCode_" + user.getMobile());
-		if (checkCodeRedis.isEmpty()) {
+		if (StringUtils.isEmpty(checkCodeRedis)) {
 			return new Result(false, StatusCode.ERROR, "请先获取手机验证码");
 		}
 		if (!checkCodeRedis.equals(code)) {
