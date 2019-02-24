@@ -7,4 +7,19 @@ eureka:
       defaultZone: http://localhost:8761/eureka
   instance:
     # 跨域访问
-    prefer‐ip‐address: true
+spring:
+  application:
+    name: triangle-qa
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://120.79.7.246:3306/triangle_qa?characterEncoding=utf8
+    username: root
+    password: root
+  jpa:
+    database: MySQL
+    show‐sql: true
+    generate‐ddl: true
+
+feign:
+  hystrix:
+    enabled: true

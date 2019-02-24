@@ -3,12 +3,12 @@ package com.xupt.qa.controller;
 import com.xupt.common.entity.PageResult;
 import com.xupt.common.entity.Result;
 import com.xupt.common.entity.StatusCode;
+import com.xupt.qa.client.BaseClient;
 import com.xupt.qa.pojo.Problem;
 import com.xupt.qa.service.ProblemService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +19,8 @@ import java.util.Map;
  * @date 2019/2/20
  */
 @CrossOrigin
-@Controller
 @RequestMapping("/problem")
+@RestController
 public class ProblemController {
 
 	@Autowired
@@ -28,6 +28,16 @@ public class ProblemController {
 
 	@Autowired
 	private HttpServletRequest request;
+
+	@Autowired
+	private BaseClient baseClient;
+
+
+	@RequestMapping(value = "/label/{labelid}", method = RequestMethod.GET)
+	public Result findLabelById(@PathVariable String labelid){
+		Result result = baseClient.findById(labelid);
+		return result;
+	}
 
 	@RequestMapping(value = "/newlist/{labelId}/{page}/{size}", method = RequestMethod.GET)
 	public Result newList(@PathVariable("labelId") String labelId,
