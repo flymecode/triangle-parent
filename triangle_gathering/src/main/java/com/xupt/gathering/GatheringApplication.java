@@ -9,4 +9,5 @@ import org.springframework.cache.annotation.EnableCaching;
 @EnableCaching
 @SpringBootApplication
 public class GatheringApplication {
+
 }
